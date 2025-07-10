@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap" rel="stylesheet" />
 
   <style>
-    /* Paleta de cores */
     :root {
       --preto: #0a0a0a;
       --dourado: #b9975b;
@@ -18,7 +17,6 @@
       --branco-off: #f5f5f0;
     }
 
-    /* Reset básico */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
@@ -42,14 +40,12 @@
       color: var(--dourado-claro);
     }
 
-    /* Container centralizado */
     .container {
       max-width: 1080px;
       margin: auto;
       padding: 0 20px 60px;
     }
 
-    /* Cabeçalho */
     header {
       background: linear-gradient(135deg, #111111 0%, #222222 100%);
       padding: 80px 20px 100px;
@@ -65,8 +61,7 @@
       color: var(--dourado);
       letter-spacing: 5px;
       margin-bottom: 15px;
-      /* removido o text-shadow para menos brilho */
-      /* text-shadow: 0 0 15px rgba(185,157,91,0.6); */
+      /* Sem brilho */
     }
 
     header p.tagline {
@@ -75,11 +70,8 @@
       color: var(--dourado-claro);
       margin-bottom: 35px;
       letter-spacing: 1.5px;
-      /* removido brilho */
-      /* text-shadow: none; */
     }
 
-    /* Botão Reservar */
     .btn-reservar {
       background: var(--dourado);
       color: var(--preto);
@@ -93,14 +85,12 @@
       border: none;
       text-transform: uppercase;
       letter-spacing: 2px;
-      text-shadow: none;
     }
     .btn-reservar:hover {
       background: var(--dourado-claro);
       box-shadow: 0 6px 20px rgba(209,181,108,0.9);
     }
 
-    /* Navegação fixa simples */
     nav {
       position: sticky;
       top: 0;
@@ -125,7 +115,6 @@
       background-color: rgba(185,157,91,0.15);
     }
 
-    /* Seções */
     section {
       padding: 80px 0 60px;
     }
@@ -137,11 +126,8 @@
       text-align: center;
       margin-bottom: 50px;
       letter-spacing: 2px;
-      /* removido brilho */
-      /* text-shadow: 0 0 10px rgba(185,157,91,0.5); */
     }
 
-    /* Texto das seções */
     .texto-secao {
       max-width: 800px;
       margin: auto;
@@ -153,7 +139,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* Grid cardápio */
     .grid-cardapio {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
@@ -220,13 +205,25 @@
       letter-spacing: 1.1px;
     }
 
+    /* Títulos separados para comidas e bebidas */
+    .subtitulo-cardapio {
+      grid-column: 1 / -1;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--dourado);
+      border-bottom: 2px solid var(--dourado-claro);
+      margin-bottom: 20px;
+      padding-bottom: 6px;
+      letter-spacing: 1.7px;
+    }
+
     /* Avaliações */
     #avaliacoes {
       background: #1f1a0a;
-      padding: 70px 20px 100px;
+      padding: 70px 20px 130px;
       border-radius: 18px;
       max-width: 900px;
-      margin: 80px auto;
+      margin: 80px auto 100px;
       box-shadow: 0 0 30px rgba(185,157,91,0.4);
       color: var(--dourado-claro);
       font-style: italic;
@@ -237,8 +234,19 @@
       line-height: 1.7;
       position: relative;
     }
+    #avaliacoes .comentario {
+      margin-bottom: 30px;
+      font-style: italic;
+      color: var(--cinza-claro);
+      font-size: 1rem;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      padding: 0 30px;
+    }
     #avaliacoes .autor {
-      margin-top: 20px;
+      margin-top: 10px;
       font-style: normal;
       font-weight: 700;
       font-size: 1rem;
@@ -247,29 +255,28 @@
 
     /* Avaliação com estrelas */
     .nota-estrelas {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 40px;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 700;
       color: var(--dourado-claro);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       letter-spacing: 1.5px;
       user-select: none;
+      font-family: 'Playfair Display', serif;
     }
     .nota-estrelas .estrela {
       color: var(--dourado);
-      font-size: 1.8rem;
+      font-size: 2rem;
       filter: drop-shadow(0 0 2px #b9975b);
     }
     .nota-estrelas .estrela.meia {
       position: relative;
       overflow: hidden;
       display: inline-block;
-      width: 0.9em;
+      width: 1em;
       color: var(--dourado);
     }
     .nota-estrelas .estrela.meia::before {
@@ -283,12 +290,38 @@
       -webkit-text-stroke: 0.2px transparent;
     }
     .nota-estrelas .nota-numero {
-      font-size: 1.8rem;
-      margin-left: 5px;
-      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-left: 8px;
     }
 
-    /* Rodapé */
+    /* Contato e localização */
+    #contato {
+      background: linear-gradient(135deg, #111111 0%, #222222 100%);
+      max-width: 900px;
+      margin: 0 auto 80px;
+      border-radius: 16px;
+      padding: 60px 30px;
+      color: var(--dourado-claro);
+      box-shadow: 0 0 25px rgba(185,157,91,0.4);
+      text-align: center;
+      font-size: 1.1rem;
+      letter-spacing: 0.4px;
+      line-height: 1.6;
+    }
+    #contato h2 {
+      color: var(--dourado);
+      margin-bottom: 40px;
+      font-size: 2.8rem;
+      letter-spacing: 1.5px;
+    }
+    #contato p {
+      margin-bottom: 20px;
+    }
+    #contato a {
+      font-weight: 700;
+      color: var(--dourado);
+    }
+
     footer {
       background: linear-gradient(135deg, #222 0%, #111 100%);
       color: var(--dourado-claro);
@@ -310,7 +343,6 @@
       color: var(--dourado-claro);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       header h1 {
         font-size: 3rem;
@@ -352,7 +384,10 @@
     <h2>Nosso Cardápio</h2>
 
     <div class="grid-cardapio">
-      <!-- Pratos -->
+
+      <!-- Comidas -->
+      <div class="subtitulo-cardapio">Comidas</div>
+
       <div class="cardapio-item">
         <img src="https://images.unsplash.com/photo-1603145732629-cc89c53a11a9?auto=format&fit=crop&w=600&q=80" alt="Risoto al Tartufo" />
         <div class="cardapio-info">
@@ -403,6 +438,8 @@
       </div>
 
       <!-- Bebidas -->
+      <div class="subtitulo-cardapio">Bebidas</div>
+
       <div class="cardapio-item">
         <img src="https://images.unsplash.com/photo-1568025907367-f8f9649659f8?auto=format&fit=crop&w=600&q=80" alt="Vinho Chianti Classico" />
         <div class="cardapio-info">
@@ -441,5 +478,56 @@
           <h3>Caffè Espresso</h3>
           <p>Café italiano autêntico, intenso e encorpado.</p>
           <div class="preco">R$ 15,00</div>
-        </
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=600&q=80" alt="Negroni" />
+        <div class="cardapio-info">
+          <h3>Negroni</h3>
+          <p>Cocktail clássico com gin, vermute e Campari.</p>
+          <div class="preco">R$ 40,00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avaliacoes" class="container">
+    <h2>Avaliações</h2>
+
+    <div class="comentario">
+      "Experiência incrível! Ambiente sofisticado e pratos que são verdadeiras obras de arte. Recomendo o Risoto al Tartufo."
+      <div class="autor">- Ana M.</div>
+    </div>
+    <div class="comentario">
+      "O atendimento foi impecável, e a comida superou todas as expectativas. O Tiramisu é de dar água na boca!"
+      <div class="autor">- Carlos P.</div>
+    </div>
+    <div class="comentario">
+      "Ambiente perfeito para uma noite especial. As bebidas são excelentes, principalmente o Prosecco DOC."
+      <div class="autor">- Juliana R.</div>
+    </div>
+
+    <div class="nota-estrelas" aria-label="Avaliação média: 4.9 de 5 estrelas">
+      <span class="estrela">★</span>
+      <span class="estrela">★</span>
+      <span class="estrela">★</span>
+      <span class="estrela">★</span>
+      <span class="estrela meia">★</span>
+      <span class="nota-numero">4,9</span>
+    </div>
+  </section>
+
+  <section id="contato" class="container">
+    <h2>Contato & Localização</h2>
+    <p><strong>Endereço:</strong> Rua das Flores, 123 - Centro, São Paulo - SP</p>
+    <p><strong>Telefone:</strong> <a href="tel:+5511999999999">(11) 99999-9999</a></p>
+    <p><strong>Email:</strong> <a href="mailto:contato@laferreira.com.br">contato@laferreira.com.br</a></p>
+    <p>Estamos à sua disposição para reservas, eventos e quaisquer dúvidas.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 La Ferreira. Todos os direitos reservados.
+  </footer>
+</body>
+</html>
 @felipe._.lz O MELHOR QUE TEM!
