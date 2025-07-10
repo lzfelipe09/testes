@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Ferreira - Restaurante Italiano</title>
+
+  <!-- Fonts: Playfair Display (Título) + Lora (Texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Paleta de cores */
+    :root {
+      --preto: #0a0a0a;
+      --dourado: #b9975b;
+      --dourado-claro: #d1b56c;
+      --cinza-claro: #e3e3e3;
+      --branco-off: #f5f5f0;
+    }
+
+    /* Reset básico */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background-color: var(--preto);
+      color: var(--branco-off);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--dourado);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--dourado-claro);
+    }
+
+    /* Container centralizado */
+    .container {
+      max-width: 1080px;
+      margin: auto;
+      padding: 0 20px 60px;
+    }
+
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(135deg, #111111 0%, #222222 100%);
+      padding: 80px 20px 100px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 4.5rem;
+      color: var(--dourado);
+      letter-spacing: 5px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px rgba(185,157,91,0.6);
+    }
+
+    header p.tagline {
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--dourado-claro);
+      margin-bottom: 35px;
+      letter-spacing: 1.5px;
+    }
+
+    /* Botão Reservar */
+    .btn-reservar {
+      background: var(--dourado);
+      color: var(--preto);
+      font-weight: 700;
+      padding: 15px 50px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(185,157,91,0.8);
+      transition: background-color 0.3s ease;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: none;
+    }
+    .btn-reservar:hover {
+      background: var(--dourado-claro);
+      box-shadow: 0 6px 20px rgba(209,181,108,0.9);
+    }
+
+    /* Navegação fixa simples (pode ser expandida depois) */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--preto);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    nav a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--dourado);
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background-color 0.25s ease;
+    }
+    nav a:hover {
+      background-color: rgba(185,157,91,0.15);
+    }
+
+    /* Seções */
+    section {
+      padding: 80px 0 60px;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--dourado);
+      text-align: center;
+      margin-bottom: 50px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(185,157,91,0.5);
+    }
+
+    /* Texto das seções */
+    .texto-secao {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.15rem;
+      color: var(--cinza-claro);
+      line-height: 1.8;
+      text-align: center;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    /* Grid cardápio */
+    .grid-cardapio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 40px;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .cardapio-item {
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(185,157,91,0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .cardapio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(185,157,91,0.5);
+    }
+
+    .cardapio-item img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--dourado);
+      transition: transform 0.4s ease;
+    }
+    .cardapio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .cardapio-info {
+      padding: 22px 25px 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cardapio-info h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--dourado);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      letter-spacing: 1.3px;
+    }
+
+    .cardapio-info p {
+      flex-grow: 1;
+      color: var(--cinza-claro);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .cardapio-info .preco {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--dourado-claro);
+      text-align: right;
+      letter-spacing: 1.1px;
+    }
+
+    /* Avaliações */
+    #avaliacoes {
+      background: #1f1a0a;
+      padding: 70px 20px;
+      border-radius: 18px;
+      max-width: 900px;
+      margin: 80px auto;
+      box-shadow: 0 0 30px rgba(185,157,91,0.4);
+      color: var(--dourado-claro);
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.6px;
+      line-height: 1.7;
+    }
+    #avaliacoes .autor {
+      margin-top: 20px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dourado);
+    }
+
+    /* Rodapé */
+    footer {
+      background: linear-gradient(135deg, #222 0%, #111 100%);
+      color: var(--dourado-claro);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      border-top: 2px solid var(--dourado);
+      user-select: none;
+    }
+    footer a {
+      color: var(--dourado);
+      margin: 0 8px;
+      font-size: 1.3rem;
+      vertical-align: middle;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: var(--dourado-claro);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      header p.tagline {
+        font-size: 1rem;
+      }
+      .grid-cardapio {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#cardapio">Cardápio</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <header>
+    <h1>La Ferreira</h1>
+    <p class="tagline">Uma experiência gastronômica memorável</p>
+    <button class="btn-reservar" onclick="alert('Obrigado por querer reservar! Entre em contato pelo telefone.')">Reservar Mesa</button>
+  </header>
+
+  <section id="sobre" class="container">
+    <h2>Sobre Nós</h2>
+    <p class="texto-secao">
+      O La Ferreira é um restaurante italiano que une tradição e modernidade, oferecendo pratos preparados com ingredientes selecionados e técnicas artesanais, para proporcionar uma experiência única e inesquecível aos nossos clientes.
+    </p>
+  </section>
+
+  <section id="cardapio" class="container">
+    <h2>Nosso Cardápio</h2>
+
+    <div class="grid-cardapio">
+      <!-- Pratos -->
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1603145732629-cc89c53a11a9?auto=format&fit=crop&w=600&q=80" alt="Risoto al Tartufo" />
+        <div class="cardapio-info">
+          <h3>Risoto al Tartufo</h3>
+          <p>Risoto cremoso com trufas negras, preparado com arroz arbóreo selecionado.</p>
+          <div class="preco">R$ 85,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1576685023870-0f19ee7999d1?auto=format&fit=crop&w=600&q=80" alt="Tagliatelle al Ragù" />
+        <div class="cardapio-info">
+          <h3>Tagliatelle al Ragù</h3>
+          <p>Massa fresca artesanal com molho à bolonhesa tradicional, feita com carne selecionada.</p>
+          <div class="preco">R$ 78,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1543352634-3974d1261a02?auto=format&fit=crop&w=600&q=80" alt="Saltimbocca alla Romana" />
+        <div class="cardapio-info">
+          <h3>Saltimbocca alla Romana</h3>
+          <p>Filé de vitela com presunto cru e sálvia, finalizado com molho delicado.</p>
+          <div class="preco">R$ 95,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80" alt="Lasagna della Nonna" />
+        <div class="cardapio-info">
+          <h3>Lasagna della Nonna</h3>
+          <p>Lasanha tradicional com camadas generosas de queijo e molho béchamel.</p>
+          <div class="preco">R$ 82,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1572373679962-98d05a195927?auto=format&fit=crop&w=600&q=80" alt="Polenta Cremosa" />
+        <div class="cardapio-info">
+          <h3>Polenta Cremosa</h3>
+          <p>Polenta macia servida com ragu de cogumelos frescos e ervas aromáticas.</p>
+          <div class="preco">R$ 70,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1562440499-68e193ed9b60?auto=format&fit=crop&w=600&q=80" alt="Tiramisu Classico" />
+        <div class="cardapio-info">
+          <h3>Tiramisu Classico</h3>
+          <p>Deliciosa sobremesa italiana feita com café, mascarpone e cacau em pó.</p>
+          <div class="preco">R$ 45,00</div>
+        </div>
+      </div>
+
+      <!-- Bebidas -->
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1568025907367-f8f9649659f8?auto=format&fit=crop&w=600&q=80" alt="Vinho Chianti Classico" />
+        <div class="cardapio-info">
+          <h3>Vinho Chianti Classico</h3>
+          <p>Vinho tinto encorpado, perfeito para harmonizar com pratos robustos.</p>
+          <div class="preco">R$ 150,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1510626176961-4bfae9d43eb1?auto=format&fit=crop&w=600&q=80" alt="Prosecco DOC" />
+        <div class="cardapio-info">
+          <h3>Prosecco DOC</h3>
+          <p>Espumante italiano leve e refrescante, ideal para celebrações.</p>
+          <div class="preco">R$ 130,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1510626176967-f98f883e4a0c?auto=format&fit=crop&w=600&q=80" alt="Aperol Spritz" />
+        <div class="cardapio-info">
+          <h3>Aperol Spritz</h3>
+          <p>Drink clássico italiano, refrescante e levemente amargo.</p>
+          <div class="preco">R$ 35,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1523983306107-32c1a392349b?auto=format&fit=crop&w=600&q=80" alt="Limoncello" />
+        <div class="cardapio-info">
+          <h3>Limoncello</h3>
+          <p>Licor típico de limão, doce e aromático, perfeito para digestivos.</p>
+          <div class="preco">R$ 40,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Caffè Espresso" />
+        <div class="cardapio-info">
+          <h3>Caffè Espresso</h3>
+          <p>Café italiano autêntico, intenso e encorpado.</p>
+          <div class="preco">R$ 15,00</div>
+        </div>
+      </div>
+      <div class="cardapio-item">
+        <img src="https://images.unsplash.com/photo-1541698444083-023c97d3f4b6?auto=format&fit=crop&w=600&q=80" alt="Água Mineral San Pellegrino" />
+        <div class="cardapio-info">
+          <h3>Água Mineral San Pellegrino</h3>
+          <p>Água com gás mineral natural, refrescante e elegante.</p>
+          <div class="preco">R$ 18,00</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="avaliacoes" class="container">
+    <h2>Avaliações</h2>
+    <p>“A melhor experiência italiana que já tive, pratos incríveis e atendimento impecável.”</p>
+    <div class="autor">- Mariana C.</div>
+
+    <p>“Ambiente sofisticado, ideal para jantares especiais. Recomendo sem dúvida!”</p>
+    <div class="autor">- Ricardo M.</div>
+
+    <p>“Uma viagem direta à Itália em cada garfada. Atmosfera e sabores inesquecíveis.”</p>
+    <div class="autor">- Alessandra F.</div>
+  </section>
+
+  <footer id="contato">
+    <div class="container">
+      <p>Rua Itália, 1001 - Centro, São Paulo - SP</p>
+      <p>Telefone: (11) 4002-8922 | WhatsApp: (11) 91234-5678</p>
+      <p>Siga-nos nas redes: 
+        <a href="#" aria-label="Instagram La Ferreira">Instagram</a> | 
+        <a href="#" aria-label="Facebook La Ferreira">Facebook</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
+@felipe._.lz O MELHOR QUE TEM!
