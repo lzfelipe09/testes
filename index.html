@@ -65,7 +65,8 @@
       color: var(--dourado);
       letter-spacing: 5px;
       margin-bottom: 15px;
-      text-shadow: 0 0 15px rgba(185,157,91,0.6);
+      /* removido o text-shadow para menos brilho */
+      /* text-shadow: 0 0 15px rgba(185,157,91,0.6); */
     }
 
     header p.tagline {
@@ -74,6 +75,8 @@
       color: var(--dourado-claro);
       margin-bottom: 35px;
       letter-spacing: 1.5px;
+      /* removido brilho */
+      /* text-shadow: none; */
     }
 
     /* Botão Reservar */
@@ -97,7 +100,7 @@
       box-shadow: 0 6px 20px rgba(209,181,108,0.9);
     }
 
-    /* Navegação fixa simples (pode ser expandida depois) */
+    /* Navegação fixa simples */
     nav {
       position: sticky;
       top: 0;
@@ -134,7 +137,8 @@
       text-align: center;
       margin-bottom: 50px;
       letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(185,157,91,0.5);
+      /* removido brilho */
+      /* text-shadow: 0 0 10px rgba(185,157,91,0.5); */
     }
 
     /* Texto das seções */
@@ -219,7 +223,7 @@
     /* Avaliações */
     #avaliacoes {
       background: #1f1a0a;
-      padding: 70px 20px;
+      padding: 70px 20px 100px;
       border-radius: 18px;
       max-width: 900px;
       margin: 80px auto;
@@ -231,6 +235,7 @@
       text-align: center;
       letter-spacing: 0.6px;
       line-height: 1.7;
+      position: relative;
     }
     #avaliacoes .autor {
       margin-top: 20px;
@@ -238,6 +243,49 @@
       font-weight: 700;
       font-size: 1rem;
       color: var(--dourado);
+    }
+
+    /* Avaliação com estrelas */
+    .nota-estrelas {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--dourado-claro);
+      font-size: 1.4rem;
+      letter-spacing: 1.5px;
+      user-select: none;
+    }
+    .nota-estrelas .estrela {
+      color: var(--dourado);
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 2px #b9975b);
+    }
+    .nota-estrelas .estrela.meia {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 0.9em;
+      color: var(--dourado);
+    }
+    .nota-estrelas .estrela.meia::before {
+      content: '★';
+      position: absolute;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+      color: var(--dourado);
+      z-index: 1;
+      -webkit-text-stroke: 0.2px transparent;
+    }
+    .nota-estrelas .nota-numero {
+      font-size: 1.8rem;
+      margin-left: 5px;
+      font-family: 'Playfair Display', serif;
     }
 
     /* Rodapé */
@@ -393,43 +441,5 @@
           <h3>Caffè Espresso</h3>
           <p>Café italiano autêntico, intenso e encorpado.</p>
           <div class="preco">R$ 15,00</div>
-        </div>
-      </div>
-      <div class="cardapio-item">
-        <img src="https://images.unsplash.com/photo-1541698444083-023c97d3f4b6?auto=format&fit=crop&w=600&q=80" alt="Água Mineral San Pellegrino" />
-        <div class="cardapio-info">
-          <h3>Água Mineral San Pellegrino</h3>
-          <p>Água com gás mineral natural, refrescante e elegante.</p>
-          <div class="preco">R$ 18,00</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="avaliacoes" class="container">
-    <h2>Avaliações</h2>
-    <p>“A melhor experiência italiana que já tive, pratos incríveis e atendimento impecável.”</p>
-    <div class="autor">- Mariana C.</div>
-
-    <p>“Ambiente sofisticado, ideal para jantares especiais. Recomendo sem dúvida!”</p>
-    <div class="autor">- Ricardo M.</div>
-
-    <p>“Uma viagem direta à Itália em cada garfada. Atmosfera e sabores inesquecíveis.”</p>
-    <div class="autor">- Alessandra F.</div>
-  </section>
-
-  <footer id="contato">
-    <div class="container">
-      <p>Rua Itália, 1001 - Centro, São Paulo - SP</p>
-      <p>Telefone: (11) 4002-8922 | WhatsApp: (11) 91234-5678</p>
-      <p>Siga-nos nas redes: 
-        <a href="#" aria-label="Instagram La Ferreira">Instagram</a> | 
-        <a href="#" aria-label="Facebook La Ferreira">Facebook</a>
-      </p>
-    </div>
-  </footer>
-
-</body>
-</html>
+        </
 @felipe._.lz O MELHOR QUE TEM!
